@@ -68,14 +68,16 @@ public class Player implements Comparable<Player> {
 
         age = 17 + dice.roll() / 5;
 
-        int peak = 28;
-        int yearsoffPeak = Math.abs(peak - age);
+        int yearsoffPeak = Math.abs(PEAK_AGE - age);
 
         combinedAdjustedForAge = combined - (yearsoffPeak * yearsoffPeak);
 
         System.out.println(this);
 
     }
+    
+    
+    private static final int PEAK_AGE = 28;
     
     
     private int age;
@@ -86,7 +88,7 @@ public class Player implements Comparable<Player> {
 
     public void setAge(int age) {
         this.age = age;
-        int peak = 28;
+        int peak = PEAK_AGE;
         int yearsoffPeak = Math.abs(peak - age);
 
         combinedAdjustedForAge = combined - (yearsoffPeak * yearsoffPeak);
