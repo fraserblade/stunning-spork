@@ -18,7 +18,8 @@ import java.util.stream.Collectors;
  */
 public class Main {
 
-    private static final int TOURNAMENTS = 1;
+    private static final int TOURNAMENTS = 10;
+    private static final int PLAYERS = 1000;
 
     /**
      * @param args the command line arguments
@@ -27,7 +28,7 @@ public class Main {
 
         List<Player> playerPot = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < PLAYERS; i++) {
             playerPot.add(new Player());
         }
 

@@ -101,7 +101,7 @@ public class Tournament {
     /**
      *
      */
-    private void addPlayersToFirstRoundFixtures() {
+     private void addPlayersToFirstRoundFixtures() {
         List<Fixture> firstRound = rounds.get(0);
         int playerNo = 0;
 
@@ -131,7 +131,7 @@ public class Tournament {
 
         for (Fixture f : roundFixtures) {
             Match match = new Match(f.player1, f.player2, 5, name + " " + roundDescription(roundFixtures.size()), roundNo);
-            roundWinner = match.playMatch(false);
+            roundWinner = match.playMatch();
             if (f.next != null) {
                 if (f.next.player1 == null) {
                     f.next.player1 = roundWinner;

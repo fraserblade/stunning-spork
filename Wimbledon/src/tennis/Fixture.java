@@ -33,7 +33,6 @@ public class Fixture {
         this.previous1 = previous1;
         this.previous2 = previous2;
         this.next = next;
-        System.out.println(this);
     }
 
 }

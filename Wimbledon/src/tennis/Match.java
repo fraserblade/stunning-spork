@@ -33,7 +33,7 @@ public class Match {
         p1Dice = new Dice(p1.getCombined());
         p2Dice = new Dice(p2.getCombined());
         setsToWin = (_numSets / 2) + 1;
-        //System.out.println("It's " + p1.getName() + " and " + p2.getName() + " taking to the court...");
+        System.out.println("It's " + p1.getName() + " and " + p2.getName() + " taking to the court...");
         if (p1.rank > p2.rank + 20) {
             //System.out.println("This should be an easy game for " + p2.getName());
         }
@@ -65,27 +65,32 @@ public class Match {
         while (setsP1 < setsToWin && setsP2 < setsToWin) {
             while (continueSet(gamesP1, gamesP2)) {
                 if (p1Dice.roll() > p2Dice.roll()) {
-                    System.out.println("Game to " + p1.getName());
+                    if (!silent) {
+                        System.out.println("Game to " + p1.getName());
+                    }
                     gamesP1++;
                 }
                 else {
-                    System.out.println("Game to " + p2.getName());
+                    if (!silent) {
+                        System.out.println("Game to " + p2.getName());
+                    }
                     gamesP2++;
                 }
-                _sleep(1);
+                if (!silent) {
+                    _sleep(1);
+                }
             }
             String setMsg = getMessageForCommentary();
 
             if (gamesP1 > gamesP2) {
                 System.out.println(p1.getName() + " takes the " + setMsg + " set " + gamesP1 + ":" + gamesP2);
                 setsP1++;
-            }
-            else {
+            } else {
                 System.out.println(p2.getName() + " takes the " + setMsg + " set " + gamesP2 + ":" + gamesP1);
                 setsP2++;
             }
             sets.add(new SetScore(gamesP1, gamesP2));
-            _sleep(5);
+            //_sleep(5);
             gamesP1 = 0;
             gamesP2 = 0;
         }
@@ -97,10 +102,14 @@ public class Match {
         if (!silent) {
             System.out.println(res);
         }
+        System.out.println(res.winner.getNameAndRank() + " wins");
         return res.winner;
     }
 
-    Player playGame() {
+    /*
+    
+     */
+    private Player playGame() {
 
         Player gameWinner = null;
         int p1Points = 0, p2Points = 0;
@@ -129,8 +138,7 @@ public class Match {
     static void _sleep(int t) {
         try {
             sleep(t * 1000);
-        }
-        catch (InterruptedException ex) {
+        } catch (InterruptedException ex) {
             Logger.getLogger(Match.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
